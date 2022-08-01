@@ -3,5 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_secure_password
+
+  # email : string
+  # password_digest: string
+  # password: string virtual
+  # password_confirmation: string virtual
+  #
+  # has_secure_password
 end
