@@ -118,6 +118,7 @@ GEM
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.2)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -177,6 +178,7 @@ DEPENDENCIES
   bootsnap
   debug
   devise (~> 4.8)
+  pg (~> 1.4, >= 1.4.2)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
   sqlite3 (~> 1.4)
