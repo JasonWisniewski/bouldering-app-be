@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_02_154920) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "areas", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_08_09_223710) do
+  create_table "areas", charset: "latin1", force: :cascade do |t|
     t.string "name"
-    t.string "look_up_code"
+    t.string "lookup_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_area_id"
   end
 
-  create_table "problems", force: :cascade do |t|
+  create_table "problems", charset: "latin1", force: :cascade do |t|
     t.bigint "areas_id"
     t.string "grade"
     t.string "description"
@@ -32,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_154920) do
     t.index ["areas_id"], name: "index_problems_on_areas_id"
   end
 
-  create_table "ticks", force: :cascade do |t|
+  create_table "ticks", charset: "latin1", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "problem_id"
     t.datetime "created_at", null: false
@@ -40,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_02_154920) do
     t.index ["user_id"], name: "index_ticks_on_user_id", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
