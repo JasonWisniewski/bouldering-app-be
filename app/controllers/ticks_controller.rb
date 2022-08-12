@@ -1,11 +1,11 @@
 class TicksController < ApplicationController
-  def show
+  def index
     @ticks = Tick.all
 
     render json: @ticks
   end
 
-  def index
+  def show
   end
 
   def update

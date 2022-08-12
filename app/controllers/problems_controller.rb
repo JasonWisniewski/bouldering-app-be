@@ -1,11 +1,15 @@
 class ProblemsController < ApplicationController
-  def show
+  def index
     @problems = Problem.all
 
     render json: @problems
   end
 
-  def index
+  def show
+    #might want to change to areas_id not sure yet
+    @problem = Problem.find(params[:id])
+
+    render json: @problem
   end
 
   def update

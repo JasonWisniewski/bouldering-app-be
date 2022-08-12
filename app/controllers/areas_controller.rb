@@ -1,11 +1,11 @@
 class AreasController < ApplicationController
-  def show
+  def index
     @areas = Area.all
 
     render json: @areas
   end
 
-  def index
+  def show
     @area = Area.find(params[:id])
     render json: @area
   end
