@@ -6,6 +6,9 @@ class TicksController < ApplicationController
   end
 
   def show
+    @tick = Tick.find(params[:id])
+
+    render json: @tick
   end
 
   def update

@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  has_secure_password
+  validates_presence_of :email
+  validates_uniqueness_of :email
+
   #GET users
   def index
     @users = User.all
@@ -24,10 +28,16 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user = find
   end
 
   def delete
 
+  end
+
+  private
+
+  def user_params
+    params.require(:email).permit(:password, :body)
   end
 end
