@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   def index
+
     @problems = Problem.all
 
     render json: @problems
@@ -16,8 +17,16 @@ class ProblemsController < ApplicationController
   end
 
   def create
+    @problem = Problem.new(problem_param)
+    render json: @problem
   end
 
   def destroy
+  end
+
+  private
+
+  def problem_param
+    params.require(:problem).permit(:areas_id, :grade, :description , :name, :rating)
   end
 end
