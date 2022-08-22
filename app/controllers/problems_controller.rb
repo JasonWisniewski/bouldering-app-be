@@ -1,11 +1,11 @@
 class ProblemsController < ApplicationController
+  #GET problems
   def index
-
     @problems = Problem.all
 
     render json: @problems
   end
-
+  #GET problems/:id
   def show
     #might want to change to areas_id not sure yet
     @problem = Problem.find(params[:id])
@@ -13,20 +13,32 @@ class ProblemsController < ApplicationController
     render json: @problem
   end
 
+  #PATCH problems/:id
   def update
-  end
+    @problem = Problem.find(params[:id])
 
-  def create
-    @problem = Problem.new(problem_param)
+    @problem.update(problem_params)
+
     render json: @problem
   end
 
+  #POST /problems/:id
+  def create
+    @problem = Problem.create(problem_params)
+    render json: @problem
+  end
+
+  #DELETE /problems/:id
   def destroy
+    @problem = Problem.find(params[:id])
+    @problem.destroy
+
+    render json: @problem
   end
 
   private
 
-  def problem_param
-    params.require(:problem).permit(:areas_id, :grade, :description , :name, :rating)
+  def problem_params
+    params.permit(:areas_id, :grade, :description , :name, :rating)
   end
 end
