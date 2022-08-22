@@ -16,18 +16,23 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  #PATCH users/:id
+  def update
+    @user = User.find(params[:id])
+    @user.update!(user_params)
+
+    render json: @user
+  end
+
   #POST /users
+  #TODO fix create
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     render json: @user
 
   end
 
-  def update
-    # @user = User.new(user_params)
-    # render json: @user
-  end
-
+  #DELETE users/:id
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -38,6 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password)
+    params.permit(:email, :password)
   end
 end

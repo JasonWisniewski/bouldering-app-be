@@ -1,28 +1,34 @@
 class TicksController < ApplicationController
+
+  #GET ticks/
   def index
     @ticks = Tick.all
 
     render json: @ticks
   end
 
+  #GET ticks/:id
   def show
     @tick = Tick.find(params[:id])
 
     render json: @tick
   end
 
-  #TODO need fix update. doesn't work
+  #PATCH Tick/:id
   def update
     @tick = Tick.find(params[:id])
+    @tick.update!(tick_params)
 
     render
   end
 
+  #POST tick
   def create
     @tick = Tick.create(tick_params)
     render json: @tick
   end
 
+  #DELETE /users
   def destroy
     @tick = Tick.find(params[:id])
     @tick.destroy
@@ -33,6 +39,6 @@ class TicksController < ApplicationController
   private
 
   def tick_params
-    params.require(:tick).permit(:user_id, :problem_id)
+    params.permit(:user_id, :problem_id)
   end
 end
