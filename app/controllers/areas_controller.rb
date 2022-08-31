@@ -34,6 +34,6 @@ class AreasController < ApplicationController
   private
 
   def area_params
-    params.permit(:name, :look_up_code, :parent_area_id)
+    params.permit(:name, :lookup_code, :parent_area_id)
   end
 end
