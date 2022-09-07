@@ -23,6 +23,7 @@ class ProblemsController < ApplicationController
   end
 
   #POST /problems/:id
+  #areas_id must already exist
   def create
     @problem = Problem.create(problem_params)
     render json: @problem

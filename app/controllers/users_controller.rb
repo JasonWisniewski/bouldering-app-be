@@ -25,11 +25,14 @@ class UsersController < ApplicationController
   end
 
   #POST /users
-  #TODO fix create
   def create
     @user = User.create(user_params)
-    render json: @user
 
+    if @user.save
+      render json: @user
+    else
+      puts 'user was not created'
+    end
   end
 
   #DELETE users/:id

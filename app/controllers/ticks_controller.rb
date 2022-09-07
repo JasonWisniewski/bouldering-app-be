@@ -14,21 +14,21 @@ class TicksController < ApplicationController
     render json: @tick
   end
 
-  #PATCH Tick/:id
+  #PATCH ticks/:id
   def update
     @tick = Tick.find(params[:id])
     @tick.update!(tick_params)
 
-    render
+    render json: @tick
   end
 
-  #POST tick
+  #POST ticks
   def create
     @tick = Tick.create(tick_params)
     render json: @tick
   end
 
-  #DELETE /users
+  #DELETE /ticks
   def destroy
     @tick = Tick.find(params[:id])
     @tick.destroy
