@@ -11,6 +11,10 @@ module BoulderingAppBe
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    #TODO ngrok-  need change auth token everytime we make availible
+    # https://dashboard.ngrok.com/get-started/your-authtoken
+    config.hosts << "b32c-2601-681-8680-f960-e88d-7cc1-d6ee-25dc.ngrok.io"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
